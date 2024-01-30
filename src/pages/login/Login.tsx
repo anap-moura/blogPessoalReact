@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import './Login.css';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -65,7 +65,7 @@ function login(e: ChangeEvent<HTMLFormElement>) {
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
-          <button  type='submit' className="rounded bg-pink-200 hover:bg-pink-400 text-white w-1/2 py-2 flex justify-center">
+          <button  type='submit' className="rounded bg-pink-200 hover:bg-pink-300 text-white w-1/2 py-2 flex justify-center">
            {isLoading ? <RotatingLines
             strokeColor="white"
             strokeWidth="5"

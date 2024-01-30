@@ -1,8 +1,9 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Usuario from '../../models/Usuario'
 import { cadastrarUsuario } from '../../services/Service'
 import './Cadastro.css'
+import { toastAlerta } from '../../utils/toastAlerta'
 
 function Cadastro() {
 
@@ -54,16 +55,16 @@ function Cadastro() {
 
       try {
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuarioResposta)
-        alert('Usuário cadastrado com sucesso')
+        toastAlerta('Usuário cadastrado com sucesso', 'sucesso')
 
       } catch (error) {
-        alert('Erro ao cadastrar o Usuário')
+        toastAlerta('Usuário cadastrado com sucesso', 'sucesso')
       }
 
     } else {
-      alert('Dados inconsistentes. Verifique as informações de cadastro.')
-      setUsuario({ ...usuario, senha: "" }) 
-      setConfirmaSenha("")                  
+      toastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro')
+      setUsuario({ ...usuario, senha: "" }) // Reinicia o campo de Senha
+      setConfirmaSenha("")                  // Reinicia o campo de Confirmar Senha
     }
   }
 
@@ -137,7 +138,7 @@ function Cadastro() {
             <button className='rounded text-white bg-red-500 hover:bg-red-700 w-1/2 py-2' onClick={back}>
               Cancelar
             </button>
-            <button className='rounded text-white bg-pink-300 hover:bg-pink-400 w-1/2 py-2' type='submit'>
+            <button className='rounded text-white bg-pink-200 hover:bg-pink-300 w-1/2 py-2' type='submit'>
               Cadastrar
             </button>
           </div>
